@@ -13,12 +13,18 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JCheckBox;
 import javax.swing.JPasswordField;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class login extends JFrame {
 
 	private JPanel contentPane;
-	private final JTextField usuariolog = new JTextField();
 	private JPasswordField passwordLog;
+	private JTextField usuario_log;
+	static login login;
 
 	/**
 	 * Launch the application.
@@ -48,24 +54,29 @@ public class login extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel label = new JLabel("New label");
-		label.setBounds(250, 10, 46, 14);
-		contentPane.add(label);
-		usuariolog.setText("Usuario");
-		usuariolog.setHorizontalAlignment(SwingConstants.CENTER);
-		usuariolog.setFont(new Font("Times New Roman", Font.BOLD, 13));
-		usuariolog.setBackground(new Color(139, 0, 0));
-		usuariolog.setForeground(new Color(255, 140, 0));
-		usuariolog.setBounds(209, 51, 141, 31);
-		contentPane.add(usuariolog);
-		usuariolog.setColumns(10);
+		usuario_log = new JTextField();
+		usuario_log.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				usuario_log.setText("");
+			}
+		});
 		
-		JCheckBox chckbxNewCheckBox = new JCheckBox("Recordar contraseña");
-		chckbxNewCheckBox.setBackground(new Color(0, 0, 0));
-		chckbxNewCheckBox.setForeground(new Color(255, 140, 0));
-		chckbxNewCheckBox.setFont(new Font("Times New Roman", Font.PLAIN, 13));
-		chckbxNewCheckBox.setBounds(172, 142, 197, 43);
-		contentPane.add(chckbxNewCheckBox);
+		usuario_log.setHorizontalAlignment(SwingConstants.CENTER);
+		usuario_log.setText("Usuario");
+		usuario_log.setBackground(new Color(139, 0, 0));
+		usuario_log.setForeground(new Color(255, 140, 0));
+		usuario_log.setFont(new Font("Times New Roman", Font.BOLD, 13));
+		usuario_log.setBounds(209, 51, 141, 27);
+		contentPane.add(usuario_log);
+		usuario_log.setColumns(10);
+		
+		JCheckBox RecordarPassword = new JCheckBox("Recordar contraseña");
+		RecordarPassword.setBackground(new Color(0, 0, 0));
+		RecordarPassword.setForeground(new Color(255, 140, 0));
+		RecordarPassword.setFont(new Font("Times New Roman", Font.PLAIN, 13));
+		RecordarPassword.setBounds(172, 142, 197, 43);
+		contentPane.add(RecordarPassword);
 		
 		passwordLog = new JPasswordField();
 		passwordLog.setFont(new Font("Times New Roman", Font.BOLD, 13));
@@ -74,9 +85,38 @@ public class login extends JFrame {
 		passwordLog.setBounds(209, 108, 141, 27);
 		contentPane.add(passwordLog);
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Migue\\Downloads\\maxresdefault (1).jpg"));
-		lblNewLabel.setBounds(0, 0, 547, 347);
-		contentPane.add(lblNewLabel);
+		JButton Boton_registro = new JButton("Registrarse");
+		Boton_registro.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+			}
+		});
+		
+		Boton_registro.setFont(new Font("Times New Roman", Font.BOLD, 13));
+		Boton_registro.setBackground(new Color(139, 0, 0));
+		Boton_registro.setForeground(new Color(255, 140, 0));
+		Boton_registro.setBounds(227, 208, 102, 43);
+		contentPane.add(Boton_registro);
+		
+		JButton CrearCuenta = new JButton("Crear cuenta nueva");
+		CrearCuenta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+                  
+                    
+                    login.setVisible(false);
+				
+			}
+		});
+		CrearCuenta.setBackground(new Color(105, 105, 105));
+		CrearCuenta.setForeground(new Color(255, 69, 0));
+		CrearCuenta.setFont(new Font("Times New Roman", Font.BOLD, 13));
+		CrearCuenta.setBounds(195, 313, 174, 23);
+		contentPane.add(CrearCuenta);
+		
+		JLabel fondo = new JLabel("");
+		fondo.setIcon(new ImageIcon("C:\\Users\\Migue\\Downloads\\maxresdefault (1).jpg"));
+		fondo.setBounds(0, 0, 547, 347);
+		contentPane.add(fondo);
 	}
 }
