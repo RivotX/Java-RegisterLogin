@@ -89,7 +89,9 @@ public class login extends JFrame {
 		Boton_registro.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+				Grafica frame= new Grafica();
+                frame.setVisible(true);
+                setVisible(false);
 			}
 		});
 		
