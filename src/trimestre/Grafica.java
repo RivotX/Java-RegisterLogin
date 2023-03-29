@@ -23,6 +23,8 @@ import java.beans.PropertyChangeEvent;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import javax.swing.JButton;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Grafica extends JFrame {
 
@@ -67,32 +69,32 @@ public class Grafica extends JFrame {
         JLabel password_error = new JLabel("Las contraseñas deben coincidir*");
 
         JLabel textoUsuario = new JLabel("Nombre de usuario");
-        textoUsuario.setForeground(Color.ORANGE);
-        textoUsuario.setBounds(34, 47, 117, 23);
+        textoUsuario.setForeground(Color.GREEN);
+        textoUsuario.setBounds(47, 47, 117, 23);
         contentPane.add(textoUsuario);
 
         JLabel textoPassword = new JLabel("Contraseña");
-        textoPassword.setForeground(Color.ORANGE);
-        textoPassword.setBounds(285, 47, 117, 23);
+        textoPassword.setForeground(Color.GREEN);
+        textoPassword.setBounds(293, 47, 117, 23);
         contentPane.add(textoPassword);
 
         JLabel textoConfirmarPassword = new JLabel("Confirmar contraseña");
-        textoConfirmarPassword.setForeground(Color.ORANGE);
-        textoConfirmarPassword.setBounds(285, 126, 132, 23);
+        textoConfirmarPassword.setForeground(Color.GREEN);
+        textoConfirmarPassword.setBounds(293, 126, 132, 23);
         contentPane.add(textoConfirmarPassword);
 
         password_error.setForeground(Color.RED);
-        password_error.setBounds(285, 173, 211, 23);
+        password_error.setBounds(295, 173, 211, 23);
         password_error.setVisible(false);
         contentPane.add(password_error);
 
         usuario = new JTextField();
-        usuario.setBounds(34, 69, 123, 20);
+        usuario.setBounds(47, 69, 123, 20);
         contentPane.add(usuario);
         usuario.setColumns(10);
 
         password1 = new JPasswordField();
-        password1.setBounds(285, 69, 140, 20);
+        password1.setBounds(295, 69, 140, 20);
         contentPane.add(password1);
 
         password2 = new JPasswordField();
@@ -104,18 +106,18 @@ public class Grafica extends JFrame {
                 password_error.setVisible(!password1.getText().equals(password2.getText()));
             }
         });
-        password2.setBounds(285, 153, 132, 20);
+        password2.setBounds(295, 153, 140, 20);
         contentPane.add(password2);
 
         JLabel correo_error = new JLabel("Debe contener @");
         correo_error.setForeground(Color.RED);
-        correo_error.setBounds(34, 173, 117, 23);
+        correo_error.setBounds(47, 173, 117, 23);
         contentPane.add(correo_error);
         correo_error.setVisible(false);
 
         JLabel textoCorreo = new JLabel("Correo electrónico");
-        textoCorreo.setForeground(Color.ORANGE);
-        textoCorreo.setBounds(34, 126, 117, 23);
+        textoCorreo.setForeground(Color.GREEN);
+        textoCorreo.setBounds(47, 126, 117, 23);
         contentPane.add(textoCorreo);
 
         correo = new JTextField();
@@ -141,11 +143,12 @@ public class Grafica extends JFrame {
             }
         });
         correo.setColumns(10);
-        correo.setBounds(34, 153, 123, 20);
+        correo.setBounds(47, 153, 123, 20);
         contentPane.add(correo);
 
         JButton boton_registro = new JButton("Registrarse");
-        boton_registro.setForeground(new Color(255, 128, 0));
+        boton_registro.setBackground(Color.BLACK);
+        boton_registro.setForeground(Color.GREEN);
         boton_registro.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (correo_error.isVisible() == false && password1.getText().equals(password2.getText())
@@ -161,7 +164,7 @@ public class Grafica extends JFrame {
 	                }
             }
         });
-        boton_registro.setBounds(162, 235, 132, 44);
+        boton_registro.setBounds(172, 234, 132, 44);
         contentPane.add(boton_registro);
 
         JCheckBox jcMostrarClave = new JCheckBox("Mostrar contraseña");
@@ -177,12 +180,26 @@ public class Grafica extends JFrame {
                 }
             }
         });
-        jcMostrarClave.setBounds(285, 96, 140, 23);
+        jcMostrarClave.setBounds(295, 96, 140, 23);
         contentPane.add(jcMostrarClave);
-
+        
+        JButton ir_a_login = new JButton("iniciar sesion");
+        ir_a_login.setBackground(Color.BLACK);
+        ir_a_login.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+        		Login login= new Login();
+                login.setVisible(true);
+                setVisible(false);
+        	}
+        });
+        ir_a_login.setForeground(Color.GREEN);
+        ir_a_login.setBounds(380, 283, 117, 34);
+        contentPane.add(ir_a_login);
+        
         JLabel Fondo = new JLabel("");
-        Fondo.setIcon(new ImageIcon("C:\\Users\\Migue\\Downloads\\hYdwKEj (1).jpg"));
-        Fondo.setBounds(0, 0, 546, 346);
+        Fondo.setIcon(new ImageIcon("C:\\Users\\Migue\\Downloads\\wlg3Xf5 (1).png"));
+        Fondo.setBounds(0, 0, 547, 347);
         contentPane.add(Fondo);
 
     }
